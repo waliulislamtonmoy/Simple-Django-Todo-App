@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>todo update</title>
+  </head>
+  <body>
+    <form class="update/" method="POST">
+      {% csrf_token %}
+      <input
+        class="h-16 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600"
+        type="text"
+        name="todotext"
+        id="todotext"
+        value="{{todo.text}}"
+      />
+      <input type="hidden" name="todoid" value="{{todo.id}}" />
+      <br />
+      <button type="submit" class="w-full py-2 bg-green-700">Update</button>
+    </form>
+  </body>
+</html>

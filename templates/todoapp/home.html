@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>todo app</title>
+  </head>
+  <body>
+    <h1 class="text-4xl px-3 py-3 bg-green-300">Todo App</h1>
+
+    <div class="add-todo m-3">
+      <form action="" method="POST">
+        {% csrf_token %} {{data.form}}
+        <div>
+          <button type="submit" class="px-2 py-2 bg-green-400 text-white">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="m-3">
+        {% for todo in data.todo %}
+        <div class="mt-5">
+          <p>{{todo.text}}</p>
+          <span>{{todo.date}}</span>
+        </div>
+        <div class="mt-5">
+          <a
+            href="update/{{todo.id}}/"
+            class="px-4 py-2 rounded bg-green-700 text-white m-1"
+          >
+            Edit
+          </a>
+          <a
+            href="delete/{{todo.id}}/"
+            class="px-4 py-2 rounded bg-red-600 text-white m-1"
+            >Delete</a
+          >
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>
